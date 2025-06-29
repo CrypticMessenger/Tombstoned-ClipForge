@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Play, Scissors, Zap, Shield, Clock, Users, Star } from "lucide-react";
+import { ArrowRight, Play, Scissors, Zap, Shield, Clock, Users, Star, Check, X } from "lucide-react";
 import Link from "next/link";
 
 export default function LandingPage() {
@@ -51,6 +51,72 @@ export default function LandingPage() {
     }
   ];
 
+  const pricingPlans = [
+    {
+      name: "Starter",
+      price: "Free",
+      period: "forever",
+      description: "Perfect for trying out Azimuth",
+      features: [
+        "5 video conversions per month",
+        "Up to 3 clips per video",
+        "720p output quality",
+        "Basic AI analysis",
+        "Email support"
+      ],
+      limitations: [
+        "No priority processing",
+        "No custom branding",
+        "No API access"
+      ],
+      popular: false,
+      cta: "Get Started Free"
+    },
+    {
+      name: "Pro",
+      price: "$29",
+      period: "per month",
+      description: "For serious content creators",
+      features: [
+        "50 video conversions per month",
+        "Up to 10 clips per video",
+        "1080p output quality",
+        "Advanced AI analysis",
+        "Priority processing",
+        "Custom thumbnails",
+        "Priority support",
+        "Analytics dashboard"
+      ],
+      limitations: [
+        "No API access",
+        "No white-label solution"
+      ],
+      popular: true,
+      cta: "Start Pro Trial"
+    },
+    {
+      name: "Enterprise",
+      price: "$99",
+      period: "per month",
+      description: "For agencies and large creators",
+      features: [
+        "Unlimited video conversions",
+        "Unlimited clips per video",
+        "4K output quality",
+        "Advanced AI with custom models",
+        "Instant processing",
+        "Custom branding",
+        "API access",
+        "Dedicated account manager",
+        "Custom integrations",
+        "White-label solution"
+      ],
+      limitations: [],
+      popular: false,
+      cta: "Contact Sales"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
       {/* Header */}
@@ -66,6 +132,7 @@ export default function LandingPage() {
         <nav className="hidden md:flex items-center space-x-8">
           <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
           <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition-colors">How it Works</a>
+          <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
           <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">Testimonials</a>
           <Link href="/auth">
             <Button variant="outline" className="mr-2">Sign In</Button>
@@ -184,31 +251,96 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section id="testimonials" className="container mx-auto px-4 py-20">
+      {/* Pricing Section */}
+      <section id="pricing" className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">What Creators Say</h2>
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">Simple, Transparent Pricing</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join thousands of content creators who trust Azimuth
+            Choose the perfect plan for your content creation needs
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="border-0 shadow-lg bg-white">
-              <CardContent className="pt-6">
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {pricingPlans.map((plan, index) => (
+            <Card key={index} className={`relative border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white ${plan.popular ? 'ring-2 ring-blue-500 scale-105' : ''}`}>
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1">
+                    Most Popular
+                  </Badge>
+                </div>
+              )}
+              <CardHeader className="text-center pb-8">
+                <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
+                  {plan.price !== "Free" && <span className="text-gray-600 ml-2">{plan.period}</span>}
+                </div>
+                <CardDescription className="mt-2">{plan.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-3">
+                  {plan.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center">
+                      <Check className="h-5 w-5 text-green-500 mr-3 flex-shrink-0" />
+                      <span className="text-gray-700">{feature}</span>
+                    </div>
+                  ))}
+                  {plan.limitations.map((limitation, limitationIndex) => (
+                    <div key={limitationIndex} className="flex items-center opacity-60">
+                      <X className="h-5 w-5 text-gray-400 mr-3 flex-shrink-0" />
+                      <span className="text-gray-500">{limitation}</span>
+                    </div>
                   ))}
                 </div>
-                <p className="text-gray-600 mb-4 italic">"{testimonial.content}"</p>
-                <div>
-                  <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                  <div className="text-sm text-gray-500">{testimonial.role}</div>
-                </div>
+                <Link href="/auth" className="block">
+                  <Button 
+                    className={`w-full ${plan.popular 
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700' 
+                      : 'bg-gray-900 hover:bg-gray-800'
+                    }`}
+                  >
+                    {plan.cta}
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           ))}
+        </div>
+        <div className="text-center mt-12">
+          <p className="text-gray-600 mb-4">All plans include a 14-day free trial. No credit card required.</p>
+          <p className="text-sm text-gray-500">
+            Need a custom solution? <a href="#" className="text-blue-600 hover:text-blue-800 underline">Contact our sales team</a>
+          </p>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section id="testimonials" className="bg-white/50 backdrop-blur-sm py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Creators Say</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Join thousands of content creators who trust Azimuth
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="border-0 shadow-lg bg-white">
+                <CardContent className="pt-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-600 mb-4 italic">"{testimonial.content}"</p>
+                  <div>
+                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
+                    <div className="text-sm text-gray-500">{testimonial.role}</div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
