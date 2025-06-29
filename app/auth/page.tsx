@@ -54,7 +54,7 @@ export default function AuthPage() {
             <CardDescription>
               {isSignUp 
                 ? 'Sign up to start converting your YouTube content'
-                : 'Sign in to your ClipForge account'
+                : 'Sign in to your Azimuth account'
               }
             </CardDescription>
           </CardHeader>

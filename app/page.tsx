@@ -60,7 +60,7 @@ export default function LandingPage() {
             <Scissors className="h-6 w-6 text-white" />
           </div>
           <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            ClipForge
+            Azimuth
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
@@ -189,7 +189,7 @@ export default function LandingPage() {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">What Creators Say</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Join thousands of content creators who trust ClipForge
+            Join thousands of content creators who trust Azimuth
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -219,7 +219,7 @@ export default function LandingPage() {
             Ready to Transform Your Content?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of creators who are already using ClipForge to grow their audience
+            Join thousands of creators who are already using Azimuth to grow their audience
           </p>
           <Link href="/auth">
             <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg">
@@ -238,10 +238,10 @@ export default function LandingPage() {
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
                 <Scissors className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-bold">ClipForge</span>
+              <span className="text-xl font-bold">Azimuth</span>
             </div>
             <div className="text-gray-400 text-sm">
-              © 2025 ClipForge. All rights reserved.
+              © 2025 Azimuth. All rights reserved.
             </div>
           </div>
         </div>
