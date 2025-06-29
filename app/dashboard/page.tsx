@@ -24,7 +24,7 @@ import {
   AlertCircle,
   Zap,
   Menu,
-  XIcon
+  X
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
@@ -225,7 +225,7 @@ export default function Dashboard() {
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
-                <XIcon className="h-5 w-5 text-gray-600" />
+                <X className="h-5 w-5 text-gray-600" />
               ) : (
                 <Menu className="h-5 w-5 text-gray-600" />
               )}

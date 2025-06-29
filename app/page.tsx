@@ -185,7 +185,7 @@ export default function LandingPage() {
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
-              <XIcon className="h-6 w-6 text-gray-600" />
+              <X className="h-6 w-6 text-gray-600" />
             ) : (
               <Menu className="h-6 w-6 text-gray-600" />
             )}
