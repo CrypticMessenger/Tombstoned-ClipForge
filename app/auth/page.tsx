@@ -38,32 +38,32 @@ export default function AuthPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Back to Home */}
-        <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8 transition-colors">
+        <Link href="/" className="inline-flex items-center text-gray-600 hover:text-gray-900 mb-6 sm:mb-8 transition-colors">
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
         </Link>
 
         <Card className="border-0 shadow-xl bg-white/80 backdrop-blur-sm">
-          <CardHeader className="text-center">
+          <CardHeader className="text-center px-4 sm:px-6">
             <div className="mx-auto mb-4 p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full w-fit">
-              <Scissors className="h-8 w-8 text-white" />
+              <Scissors className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
             </div>
-            <CardTitle className="text-2xl font-bold">
+            <CardTitle className="text-xl sm:text-2xl font-bold">
               {isSignUp ? 'Create Account' : 'Welcome Back'}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-sm sm:text-base">
               {isSignUp 
                 ? 'Sign up to start converting your YouTube content'
                 : 'Sign in to your ClipForge account'
               }
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4 sm:space-y-6 px-4 sm:px-6">
             {/* OAuth Buttons */}
             <div className="space-y-3">
               <Button 
                 variant="outline" 
-                className="w-full"
+                className="w-full text-sm sm:text-base"
                 onClick={() => handleOAuthSignIn('google')}
               >
                 <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export default function AuthPage() {
               </Button>
               <Button 
                 variant="outline" 
-                className="w-full"
+                className="w-full text-sm sm:text-base"
                 onClick={() => handleOAuthSignIn('github')}
               >
                 <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ export default function AuthPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {isSignUp && (
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name</Label>
+                  <Label htmlFor="name" className="text-sm sm:text-base">Full Name</Label>
                   <Input
                     id="name"
                     type="text"
@@ -107,18 +107,19 @@ export default function AuthPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required={isSignUp}
+                    className="text-sm sm:text-base"
                   />
                 </div>
               )}
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-sm sm:text-base">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -126,21 +127,21 @@ export default function AuthPage() {
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-sm sm:text-base">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                   <Input
                     id="password"
                     type="password"
                     placeholder="Enter your password"
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
                 </div>
               </div>
-              <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+              <Button type="submit" className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base">
                 {isSignUp ? 'Create Account' : 'Sign In'}
               </Button>
             </form>
@@ -149,7 +150,7 @@ export default function AuthPage() {
               <button
                 type="button"
                 onClick={() => setIsSignUp(!isSignUp)}
-                className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+                className="text-xs sm:text-sm text-blue-600 hover:text-blue-800 transition-colors"
               >
                 {isSignUp 
                   ? 'Already have an account? Sign in'
