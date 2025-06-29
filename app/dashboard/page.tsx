@@ -190,7 +190,7 @@ export default function Dashboard() {
                 <Scissors className="h-6 w-6 text-white" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Azimuth
+                ClipForge
               </span>
             </Link>
             <Badge variant="secondary" className="bg-green-100 text-green-700">

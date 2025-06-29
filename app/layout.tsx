@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Azimuth - Transform Long Videos Into Viral Clips',
+  title: 'ClipForge - Transform Long Videos Into Viral Clips',
   description: 'Convert your YouTube content into engaging short-form videos automatically with AI-powered content extraction.',
 };
 
